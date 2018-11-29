@@ -1,2 +1,2 @@
-# curvy
-The Smooth Forward Price Curve builder you never thought you needed
+# Curvy
+The Smooth Forward Price Curve builder for Python you never thought you needed
