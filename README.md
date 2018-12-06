@@ -15,7 +15,7 @@ plot.mpl_plot_curves(x, y, fig, ax, (x, y_smfc, 'green', '-'))
 ```
 
 
-    <Figure size 1500x1000 with 1 Axes>
+![png](output_1_0.png)
 
 
 ## Building our x-axis index variables
