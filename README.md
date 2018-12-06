@@ -15,7 +15,7 @@ plot.mpl_plot_curves(x, y, fig, ax, (x, y_smfc, 'green', '-'))
 ```
 
 
-![png](output_1_0.png)
+![png](images\output_1_0.png)
 
 
 ## Building our x-axis index variables
@@ -61,7 +61,7 @@ plot.mpl_plot_curves(x, y, fig, ax, (x, y_smfc, 'green', '-'))
 ```
 
 
-![png](output_7_0.png)
+![png](images\output_7_0.png)
 
 
 ### Showing only the segments
@@ -74,7 +74,7 @@ plot.mpl_plot_curve_sections(x, y, fig, ax, (dr, y_smfc), (dr, pr), hide_price=T
 ```
 
 
-![png](output_9_0.png)
+![png](images\output_9_0.png)
 
 
 ## Or customize your own plots
@@ -109,5 +109,5 @@ plot.mpl_plot_curves(
 ```
 
 
-![png](output_12_0.png)
+![png](images\output_12_0.png)
 
