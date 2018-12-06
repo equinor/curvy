@@ -1,0 +1,13 @@
+{
+    "python.pythonPath": "C:\\appl\\anaconda3\\envs\\curvy_env\\python.exe",
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+    ],
+}
