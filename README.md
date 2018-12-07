@@ -6,6 +6,10 @@ markets](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.470.8485&rep=r
 
 The library takes a list of forward curve prices and automatically assigns them to a period in the following order: Day Ahead (DA), Bound of Month (BOM), End of Month (EOM) 1, EOM 2, etc... Currently, this is the only format the library supports, but the curve builder is not restricted to this format. If needed, it is very possible to build custom formats and optimize the curve over this.
 
+### Installing
+
+Download this package from GitHub. Unzip the file and run `python setup.py install`.
+
 ### The simple way
 The easiest way to build the forward price curve is to use the `build_smfc_curve` function. It takes in a list of forward prices and the starting date for trading. For our example, the first value in the forward price list would be the Day Ahead price, so the starting date is actually one day before the first forward price in the list.
 
