@@ -23,7 +23,7 @@ def calc_big_H(taus):
 def calc_avg_constraint(tau_b, tau_e):
     return np.matrix([(tau_e**5 - tau_b**5) / 5, (tau_e**4 - tau_b**4) / 4, (tau_e**3 - tau_b**3) / 3, (tau_e**2 - tau_b**2) / 2, tau_e - tau_b])
 
-def calc_constraints(u_j, tau_b, tau_e):
+def calc_constraints(u_j):
     # Using the four contraints: connectivity, continuous, smooth and maintaining the average.
     # Excluding the requirement for the line to be zero at the end.
     return np.matrix([
@@ -36,7 +36,7 @@ def calc_big_A(knots, taus):
     A = npm.zeros((4 * len(knots) + 1, 5 * len(knots) + 5))
     for i, knot in enumerate(knots):
         tau_b, tau_e = taus[i]
-        c1 = calc_constraints(knot, tau_b, tau_e)
+        c1 = calc_constraints(knot)
         c2 = calc_avg_constraint(tau_b, tau_e)
         A[(4 * i):(4 * i + 3), (5 * i):(5 * i + 5)] = c1
         A[(4 * i):(4 * i + 3), (5 * i + 5):(5 * i + 10)] = - c1
@@ -75,6 +75,9 @@ def solve_lineq(H, A, B, split=True, num_params=5):
     else:
         return X
 
+def smfc(u, params):
+    return params[0] * u**4 + params[1] * u**3 + params[2] * u**2 + params[3] * u + params[4]
+
 def curve_values(ranges, X, curve_func, flatten=False):
     if len(ranges) != len(X):
         raise ValueError('Arrays do not match in length')
@@ -87,9 +90,6 @@ def curve_values(ranges, X, curve_func, flatten=False):
         return np.concatenate(x_ranges)
     else:
         return x_ranges
-
-def smfc(u, params):
-    return params[0] * u**4 + params[1] * u**3 + params[2] * u**2 + params[3] * u + params[4]
 
 def calc_smfc(dr, prices, flatten=True):
     taus = axis.start_end_absolute_index(dr, overlap=1)
