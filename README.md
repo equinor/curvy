@@ -6,7 +6,7 @@ The Smooth Forward Price Curve builder for Python you never thought you needed.
 This library is based on theory from "[Constructing forward price curves in electricity
 markets](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.470.8485&rep=rep1&type=pdf)" by Fleten and Lemming. The curve is created by solving a constrained optimization problem that ensures that the curve maintains the correct average value for each price period while keeping its smooth and continuous properties.
 
-The library takes a list of forward curve prices and automatically assigns them to a period in the following order: Day Ahead (DA), Bound of Month (BOM), End of Month (EOM) 1, EOM 2, etc... Currently, this is the only format the library supports, but the curve builder is not restricted to this format. If needed, it is very possible to build custom formats and optimize the curve over this.
+The library takes a list of forward curve prices and automatically assigns them to a period in the following order: Day Ahead (DA), Balance of Month (BOM), End of Month (EOM) 1, EOM 2, etc... Currently, this is the only format the library supports, but the curve builder is not restricted to this format. If needed, it is very possible to build custom formats and optimize the curve over this.
 
 ### Installing
 
@@ -66,7 +66,7 @@ y = axis.flatten_ranges(pr)
 ```
 
 #### Building the curve parameters
-After the index is build, the optimization problem can be solved. This will give us the necessary parameters to calculate the smooth forward curve.
+After the index is built, the optimization problem can be solved. This will give us the necessary parameters to calculate the smooth forward curve.
 
 ```python
 taus = axis.start_end_absolute_index(dr, overlap=1)
