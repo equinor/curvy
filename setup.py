@@ -13,6 +13,6 @@ setup(
         'numpy',
         'scipy',
         'pandas',
-        'matplotlib'
+#        'matplotlib'
     ]
 )

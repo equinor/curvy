@@ -94,12 +94,12 @@ class TestBuilderMethods(unittest.TestCase):
         B = builder.calc_B(prices, taus)
         X = builder.solve_lineq(H, A, B)
 
-        np.testing.assert_array_equal(
+        np.testing.assert_array_almost_equal(
             builder.curve_values(taus, X, builder.smfc),
             curve_values
         )
 
-        np.testing.assert_array_equal(
+        np.testing.assert_array_almost_equal(
             builder.curve_values(taus, X, builder.smfc, flatten=True),
             curve_values_flat
         )
@@ -110,14 +110,14 @@ class TestBuilderMethods(unittest.TestCase):
         curve_values = np.load('test/test_files/curve_values2.npy')
         curve_values_flat = np.load('test/test_files/curve_values2_no_flat.npy').tolist()
 
-        np.testing.assert_array_equal(
+        np.testing.assert_array_almost_equal(
             builder.calc_smfc(dr, prices2),
             curve_values
         )
 
         test_curve_values = builder.calc_smfc(dr, prices2, flatten=False)
         for i in range (0, len(test_curve_values)):
-            np.testing.assert_array_equal(test_curve_values[i], curve_values_flat[i])
+            np.testing.assert_array_almost_equal(test_curve_values[i], curve_values_flat[i])
 
     #### This one might be harder to test 
     #
