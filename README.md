@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/equinor/curvy.svg?branch=master)](https://travis-ci.org/equinor/curvy)
+
 # Curvy
 The Smooth Forward Price Curve builder for Python you never thought you needed.
 
