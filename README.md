@@ -134,6 +134,18 @@ plot.mpl_plot_curves(
 
 ![png](images/output_12_0.png)
 
+### Correcting the average of the smoothed curve
+In areas of rapid change in the forward price, the optimization algorithm struggles to maintain a correct average. If it is important for you to have a very precise average value for each time product, there is a method to correct for that. The correction algorithm works by first creating the smooth curve using the input forward prices. It then removes the difference between the average of the curve and the correct average from the forward prices. From this, a new range of corrected forward prices are created and the curve builder is run one more time based on these values. The average correction can be run by adding `corr_avg=True` as an input variable to the curve building function:
+
+```python
+x, y, dr, pr, y_smfc_corrected = builder.build_smfc_curve(forward_prices, start_date, corr_avg=True)
+```
+
+The end result can be seen in plot below.
+
+![png](images/plot_corrected.png)
+
+
 # Contribution
 Bugs or suggestions? Please don't hesitate to post an issue on it!
 
