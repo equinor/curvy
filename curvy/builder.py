@@ -100,10 +100,22 @@ def calc_smfc(dr, prices, flatten=True):
     X = solve_lineq(H, A, B)
     return curve_values(dr, X, smfc, flatten=flatten)
 
-def build_smfc_curve(prices, start_date=None, flatten=True):
+def build_smfc_curve(prices, start_date=None, flatten=True, corr_avg=False):
     if start_date is None:
         start_date = datetime.now()
     x, y, dr, pr = axis.get_ranges(start_date, prices)
     y_smfc = calc_smfc(dr, prices, flatten)
 
+    if (corr_avg):
+        y_smfc_no_flat = calc_smfc(dr, prices, False)
+        diff = avg_diff(y_smfc_no_flat, prices)
+        corrected_prices = [f - d for f, d in zip(prices, diff)]
+        y_smfc = calc_smfc(dr, corrected_prices, flatten)
+
     return x, y, dr, pr, y_smfc
+
+def avg_diff(y_smfc_no_flat, forward_prices):
+    diff = []
+    for i, r in enumerate(y_smfc_no_flat):
+        diff.append(np.array(r).mean() - forward_prices[i])
+    return diff
